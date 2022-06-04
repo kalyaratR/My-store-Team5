@@ -1,9 +1,7 @@
 package Tests;
 
 import Pages.FooterInfoPage;
-import Pages.HomePage;
 import base.BaseTest;
-import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -17,7 +15,7 @@ public class FooterInfoTest extends BaseTest {
     }
     @DataProvider(name = "FooterInfo")
     public Object[] testData() {
-        Object[] data = new Object[7];
+        Object[] data = new Object[8];
         data[0] = "Specials";
         data[1] = "New products";
         data[2] = "Best sellers";
@@ -25,19 +23,23 @@ public class FooterInfoTest extends BaseTest {
         data[4] = "Contact us";
         data[5] = "Terms and conditions of use";
         data[6] = "About us";
+        data[7] = "Sitemap";
 
         return data;
     }
 
     @Test(testName = "Footer Info List varification", dataProvider = "FooterInfo")
-    public void test01(String footer) {
-        Assert.assertTrue(footerInfoPage.footerInfoList.contains(footer));
-    }
+    public void test01(String data) {
 
-    @Test(testName = "Sitemap varification")
-    public void test02() {
+        boolean specials = footerInfoPage.specials.isDisplayed();
+        boolean newProduct = footerInfoPage.newProduct.isDisplayed();
+        boolean bestSellers = footerInfoPage.bestSellers.isDisplayed();
+        boolean ourStores = footerInfoPage.ourStores.isDisplayed();
+        boolean contactUs = footerInfoPage.contactUs.isDisplayed();
+        boolean termsConditions = footerInfoPage.termsConditions.isDisplayed();
+        boolean aboutUs = footerInfoPage.aboutUs.isDisplayed();
+        boolean siteMap = footerInfoPage.siteMap.isDisplayed();
 
-        Assert.assertTrue(footerInfoPage.siteMap.getText().contains("Sitemap"));
     }
 
  }
