@@ -18,7 +18,7 @@ public class FooterInfoPage extends BasePage {
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }
-    @FindBy(xpath = "//li[@class='item']")
+    @FindBy(xpath = "(//ul[@class='toggle-footer'])[1]")
     public List<WebElement> footerInfoList;
 
     @FindBy(css = "a[title='Specials']")

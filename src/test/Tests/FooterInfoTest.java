@@ -2,9 +2,13 @@ package Tests;
 
 import Pages.FooterInfoPage;
 import base.BaseTest;
+import org.openqa.selenium.WebElement;
+import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
+
+import java.util.List;
 
 public class FooterInfoTest extends BaseTest {
     FooterInfoPage footerInfoPage;
@@ -28,17 +32,13 @@ public class FooterInfoTest extends BaseTest {
         return data;
     }
 
-    @Test(testName = "Footer Info List varification", dataProvider = "FooterInfo")
+    @Test(testName = "Footer Info List varification")
     public void test01(String data) {
-
-        boolean specials = footerInfoPage.specials.isDisplayed();
-        boolean newProduct = footerInfoPage.newProduct.isDisplayed();
-        boolean bestSellers = footerInfoPage.bestSellers.isDisplayed();
-        boolean ourStores = footerInfoPage.ourStores.isDisplayed();
-        boolean contactUs = footerInfoPage.contactUs.isDisplayed();
-        boolean termsConditions = footerInfoPage.termsConditions.isDisplayed();
-        boolean aboutUs = footerInfoPage.aboutUs.isDisplayed();
-        boolean siteMap = footerInfoPage.siteMap.isDisplayed();
+        List<WebElement> footerList = footerInfoPage.footerInfoList;
+        String[] expected = {"Specials", "New products", "Best sellers", "Our stores",
+                            "Contact us", "Terms and Conditions of use",
+                            "About us", "Sitemap"};
+        Assert.assertEquals(footerList, expected);
 
     }
 
