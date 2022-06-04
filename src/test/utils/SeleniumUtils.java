@@ -21,4 +21,13 @@ public class SeleniumUtils {
         driver.switchTo().window(currentWindowID);
         return title;
     }
+    public static void switchWindow(WebDriver driver){
+        String mainWindow = driver.getWindowHandle();
+        Set<String> allWindows = driver.getWindowHandles();
+
+        for(String each: allWindows){
+            if (!each.equals(mainWindow))
+                driver.switchTo().window(each);
+        }
+    }
 }
