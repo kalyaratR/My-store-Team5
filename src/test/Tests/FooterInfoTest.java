@@ -2,6 +2,7 @@ package Tests;
 
 import Pages.FooterInfoPage;
 import base.BaseTest;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
@@ -17,6 +18,7 @@ public class FooterInfoTest extends BaseTest {
     public void localSetUp() {
         footerInfoPage = new FooterInfoPage(getDriver());
     }
+
     @DataProvider(name = "FooterInfo")
     public Object[] testData() {
         Object[] data = new Object[8];
@@ -32,15 +34,12 @@ public class FooterInfoTest extends BaseTest {
         return data;
     }
 
-    @Test(testName = "Footer Info List varification")
+    @Test(testName = "Footer Info List varification", dataProvider = "FooterInfo")
     public void test01(String data) {
-        List<WebElement> footerList = footerInfoPage.footerInfoList;
-        String[] expected = {"Specials", "New products", "Best sellers", "Our stores",
-                            "Contact us", "Terms and Conditions of use",
-                            "About us", "Sitemap"};
-        Assert.assertEquals(footerList, expected);
+
+        boolean footerList = footerInfoPage.footerInfoList.contains(data);
 
     }
+}
 
- }
 
