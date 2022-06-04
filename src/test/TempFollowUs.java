@@ -1,3 +1,4 @@
+import base.BaseTest;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -7,7 +8,9 @@ import org.testng.annotations.Test;
 
 import java.util.concurrent.TimeUnit;
 
-public class TempFollowUs {
+import static utils.SeleniumUtils.switchToWindowAndVerifyTitle;
+
+public class TempFollowUs extends BaseTest {
     WebDriver driver;
 
     @BeforeMethod
@@ -17,11 +20,17 @@ public class TempFollowUs {
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.manage().window().maximize();
 
-        driver.get("http://automationpractice.com/index.php");
+        driver.get("https://twitter.com/seleniumfrmwrk");
     }
     @Test()
     public void test01(){
 
         driver.findElement(By.xpath("//*[@class='facebook']")).click();
+
+    }
+    @Test()
+    public void test02(){
+
+        System.out.println(driver.getTitle());
     }
 }
