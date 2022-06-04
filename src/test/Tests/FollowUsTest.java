@@ -29,7 +29,6 @@ public class FollowUsTest extends BaseTest {
     @Test(testName = "AUT-5")
     public void test02(){
         followUsPage.click(followUsPage.twittwrBtn);
-        //getDriver().findElement(By.xpath("//*[@class='twitter']")).click();
         String actualTitle = SeleniumUtils.switchToWindowAndVerifyTitle(getDriver());
         Assert.assertEquals(actualTitle, "Selenium Framework (@seleniumfrmwrk) / Twitter");
     }
@@ -37,7 +36,6 @@ public class FollowUsTest extends BaseTest {
     @Test(testName = "AUT-5")
     public void test03(){
         followUsPage.click(followUsPage.youtubeBtn);
-        //getDriver().findElement(By.xpath("//*[@class='youtube']")).click();
         String actualTitle = SeleniumUtils.switchToWindowAndVerifyTitle(getDriver());
         Assert.assertEquals(actualTitle, "Selenium Framework - YouTube");
     }
@@ -45,7 +43,6 @@ public class FollowUsTest extends BaseTest {
     @Test(testName = "AUT-5")
     public void test04(){
         followUsPage.click(followUsPage.googleBtn);
-        //getDriver().findElement(By.xpath("//*[@class='google-plus']")).click();
         String actualTitle = SeleniumUtils.switchToWindowAndVerifyTitle(getDriver());
         Assert.assertEquals(actualTitle, "Sign in - Google Accounts");
     }
