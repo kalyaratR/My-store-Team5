@@ -1,46 +1,50 @@
 package Tests;
 
+import Pages.AccountSectionPage;
 import Pages.HomePage;
 import base.BasePage;
 import base.BaseTest;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
+import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
+import org.testng.annotations.Test;
+import utils.SeleniumUtils;
 
 public class AccountSectionTest extends BaseTest {
     HomePage homePage;
 
+    AccountSectionPage accountSectionPage;
+
     @BeforeMethod
     public void localSetUp() {
-        homePage = new HomePage(getDriver());
+
+        accountSectionPage = new AccountSectionPage(getDriver());
+
     }
 
-    @DataProvider(name = "LinksTestData")
-    public Object[][] testData1() {
-        Object[][] data = new Object[7][2];
-        data[0][0] = "php-travels";
-        data[0][1] = "Demo Script Test drive - PHPTRAVELS";
+    @DataProvider(name = "userInfo")
+    public Object[] testData() {
+        Object[] data = new Object[4];
+        data[0] = "My orders";
+        data[1] = "My credit slips";
+        data[2] = "My addresses";
+        data[3] = "My personal info";
 
-        data[1][0] = "mercury-tours";
-        data[1][1] = "Demoaut.com";
-
-        data[2][0] = "internet";
-        data[2][1] = "The Internet";
-
-        data[3][0] = "e-commerce";
-        data[3][1] = "My Store";
-
-        data[4][0] = "passion-tea-company";
-        data[4][1] = "";
-
-        data[5][0] = "sauce-demo";
-        data[5][1] = "Swag Labs";
-
-        data[6][0] = "shopping-cart";
-        data[6][1] = "Typescript React Shopping cart";
 
         return data;
     }
 
+    @Test(testName = "AccountSectionInfo", dataProvider = "userInfo")
+    public void test01(String myOrders, String myCreditSlips, String myAddresses, String myPersonalInfo) {
+
+            getDriver().findElement(By.xpath("userInfo")).click();
+            String actualTitle = SeleniumUtils.switchToWindowAndVerifyTitle(getDriver());
+            Assert.assertEquals(actualTitle, testData());
+        }
+
 }
+
+

@@ -14,6 +14,11 @@ public class HomePage extends BasePage {
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }
+
     @FindBy(xpath = "//nav//a/u[text()='Sign out']")
     public WebElement signOutBtn;
+
+
+
+
 }
